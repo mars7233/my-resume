@@ -1,6 +1,13 @@
-var exec = require('child_process').exec;
-var cmd = 'nohup npm run dev';
+const express = require('express');
+const app = express();
+app.use(express.static('./example/dist'));
 
-exec(cmd, function(error, stdout, stderr) {  
-  process.exit(0);
+const port = 8080;
+
+app.listen(port, function (err) {
+  if (err) {
+    console.log(err);
+    return;
+  }
+  console.log('Listening at http://localhost:' + port + '\n');
 });
